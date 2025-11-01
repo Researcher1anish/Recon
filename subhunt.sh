@@ -32,7 +32,7 @@ cat subfinder.txt assetfinder.txt findomain.txt | sort -u  > all_subdomain.txt
 echo "[!]Sorted domains files into all_subdomain.txt"
 echo
 
-# Checkinf for the live hosts.
+# Checking for the live hosts.
 echo "[!]Now checking for the live domains through httpx"
 cat all_subdomain.txt | httpx -silent -status-code -title -location -o live_domains.txt
 echo
