@@ -29,6 +29,7 @@ httpx
 You can install them using:
 
 sudo apt install subfinder findomain
+
 go install github.com/tomnomnom/assetfinder@latest
 go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 
@@ -36,7 +37,7 @@ go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 Make sure $GOPATH/bin is added to your system PATH.
 
 🚀 Usage
-bash recon.sh
+bash subhunt.sh
 
 
 When prompted, enter your target domain:
