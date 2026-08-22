@@ -20,7 +20,7 @@ echo
 # Finding domain through assetfinder.
 echo "[!] Now running assestfinder..."
 assetfinder -subs-only "$domain"  > assetfinder.txt
-echo "::Finished - "
+echo ":: Finished - "
 
 echo
 
@@ -37,11 +37,11 @@ echo ":: Finished  "
 echo
 
 # Sorting out the found subdomains.
-echo "::Now sorting all the subdomains..."
+echo ":: Now sorting all the subdomains..."
 cat subfinder.txt assetfinder.txt findomain.txt VirusSub.txt | sort -u  > all_subdomain.txt
-echo "::Sorted domains files into all_subdomains.txt"
+echo ":: Sorted domains files into all_subdomains.txt"
 echo
-echo "::Results saved in all_subdomains.txt"
+echo ":: Results saved in all_subdomains.txt"
 echo
 rm assetfinder.txt findomain.txt subfinder.txt VirusSub.txt
 echo "GOOD LUCK!"
