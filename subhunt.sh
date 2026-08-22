@@ -1,8 +1,8 @@
 #!/bin/bash
-echo " ____        _     _                 _   
-/ ___| _   _| |__ | |__  _   _ _ __ | |_ 
+echo " ____        _     _                 _
+/ ___| _   _| |__ | |__  _   _ _ __ | |_
 \___ \| | | | '_ \| '_ \| | | | '_ \| __|
- ___) | |_| | |_) | | | | |_| | | | | |_ 
+ ___) | |_| | |_) | | | | |_| | | | | |_
 |____/ \__,_|_.__/|_| |_|\__,_|_| |_|\__|
 "
 # Starting Recon...
@@ -29,18 +29,16 @@ echo "[!]Now running findomain..."
 findomain -t "$domain" -u findomain.txt
 
 echo
-
+echo "Finding domain through Virustotal"
+curl -s "https://www.virustotal.com/vtapi/v2/domain/report?apikey=YOUR_API_KEY&domain=myfitnesspal.com" | jq -r '.subdomains[]' > VirusSub.txt
+echo "Finished - "
+echo
 # Sorting out the found subdomains.
 echo "[!]Now sorting all the subdomains..."
-cat subfinder.txt assetfinder.txt findomain.txt | sort -u  > all_subdomain.txt
-echo "[!]Sorted domains files into all_subdomain.txt"
+cat subfinder.txt assetfinder.txt findomain.txt VirusSub.txt | sort -u  > all_subdomain.txt
+echo "[!]Sorted domains files into all_subdomains.txt"
 echo
-
-# Checking for the live hosts.
-echo "[!]Now checking for the live domains through httpx"
-cat all_subdomain.txt | httpx -silent  -status-code -title -location -o live_domains.txt
+echo "[!]Results saved in all_subdomains.txt"
 echo
-echo "[!]Results saved in live_domains.txt"
-echo
-rm assetfinder.txt findomain.txt subfinder.txt 
-echo "GOOD LUCK!"
+rm assetfinder.txt findomain.txt subfinder.txt VirusSub.txt
+echo "GOOD LUCK!
