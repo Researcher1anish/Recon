@@ -29,8 +29,9 @@ echo "[!]Now running findomain..."
 findomain -t "$domain" -u findomain.txt
 
 echo
-echo "Finding domain through Virustotal"
-curl -s "https://www.virustotal.com/vtapi/v2/domain/report?apikey=YOUR_API_KEY&domain=myfitnesspal.com" | jq -r '.subdomains[]' > VirusSub.txt
+# Finding domain through Virustotal
+echo "Now running virustotal..."
+curl -s 'https://www.virustotal.com/vtapi/v2/domain/report?apikey=YOUR_API_KEY&domain="$domain"' | jq -r '.subdomains[]' > VirusSub.txt
 echo "Finished - "
 echo
 # Sorting out the found subdomains.
